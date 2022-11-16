@@ -2,37 +2,44 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
-             x:Class="smeter_telerik.MainPage">
+             x:Class="smeter_telerik.MainPage"
+             Title="Dżazgometr">
 
-    <Grid Margin="20,35,20,20">
+    <Grid >
         <Grid.RowDefinitions>
+            <RowDefinition Height="480"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <telerik:RadRadialGauge  x:Name="gauge" AutomationId="gauge" Grid.Column="1" ScaleX="2">
-            <telerik:RadRadialGauge.Axis>
-                <telerik:GaugeLinearAxis Maximum="200"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.Children>
+            <Button Text="Start" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Start_Clicked"></Button>
+            <Button Text="Stop" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center"></Button>
+            <telerik:RadRadialGauge AutomationId="gauge" >
+                <telerik:RadRadialGauge.Axis>
+                    <telerik:GaugeLinearAxis Maximum="200"
                                Minimum="0"
                                Step="25" />
-            </telerik:RadRadialGauge.Axis>
-            <telerik:RadRadialGauge.Indicators>
-                <telerik:GaugeNeedleIndicator Offset="30" Value="60" />
-                <telerik:GaugeShapeIndicator Value="80" />
-            </telerik:RadRadialGauge.Indicators>
-            <telerik:RadRadialGauge.Ranges>
-                <telerik:GaugeRangesDefinition>
-                    <telerik:GaugeRange Color="Green"
+                </telerik:RadRadialGauge.Axis>
+                <telerik:RadRadialGauge.Indicators>
+                    <telerik:GaugeNeedleIndicator x:Name="dzazgometr" Offset="30" Value="30" />
+                </telerik:RadRadialGauge.Indicators>
+                <telerik:RadRadialGauge.Ranges>
+                    <telerik:GaugeRangesDefinition>
+                        <telerik:GaugeRange Color="Green"
                               From="0"
                               To="150" />
-                    <telerik:GaugeGradientRange From="150" To="200">
-                        <telerik:RadGradientStop Offset="150" Color="Yellow" />
-                        <telerik:RadGradientStop Offset="200" Color="Red" />
-                    </telerik:GaugeGradientRange>
-                </telerik:GaugeRangesDefinition>
-            </telerik:RadRadialGauge.Ranges>
-        </telerik:RadRadialGauge>
-       
-        <Button Text="Tw matka"  Grid.Row="2"></Button>
+                        <telerik:GaugeGradientRange From="0" To="200">
+                            <telerik:RadGradientStop Offset="0" Color="Green" />
+                            <telerik:RadGradientStop Offset="150" Color="Yellow" />
+                            <telerik:RadGradientStop Offset="200" Color="Red" />
+                        </telerik:GaugeGradientRange>
+                    </telerik:GaugeRangesDefinition>
+                </telerik:RadRadialGauge.Ranges>
+            </telerik:RadRadialGauge>
+        </Grid.Children>
     </Grid>
 
 </ContentPage>
