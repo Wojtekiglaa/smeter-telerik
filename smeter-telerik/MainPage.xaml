@@ -1,41 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
              x:Class="smeter_telerik.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
-
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-
-        </VerticalStackLayout>
-    </ScrollView>
+    <Grid Margin="20,35,20,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <telerik:RadRadialGauge  x:Name="gauge" AutomationId="gauge" Grid.Column="1" ScaleX="2">
+            <telerik:RadRadialGauge.Axis>
+                <telerik:GaugeLinearAxis Maximum="200"
+                               Minimum="0"
+                               Step="25" />
+            </telerik:RadRadialGauge.Axis>
+            <telerik:RadRadialGauge.Indicators>
+                <telerik:GaugeNeedleIndicator Offset="30" Value="60" />
+                <telerik:GaugeShapeIndicator Value="80" />
+            </telerik:RadRadialGauge.Indicators>
+            <telerik:RadRadialGauge.Ranges>
+                <telerik:GaugeRangesDefinition>
+                    <telerik:GaugeRange Color="Green"
+                              From="0"
+                              To="150" />
+                    <telerik:GaugeGradientRange From="150" To="200">
+                        <telerik:RadGradientStop Offset="150" Color="Yellow" />
+                        <telerik:RadGradientStop Offset="200" Color="Red" />
+                    </telerik:GaugeGradientRange>
+                </telerik:GaugeRangesDefinition>
+            </telerik:RadRadialGauge.Ranges>
+        </telerik:RadRadialGauge>
+       
+        <Button Text="Tw matka"  Grid.Row="2"></Button>
+    </Grid>
 
 </ContentPage>
