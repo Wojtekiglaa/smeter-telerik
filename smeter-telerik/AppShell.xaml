@@ -6,9 +6,12 @@
     xmlns:local="clr-namespace:smeter_telerik"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
+    <TabBar>
+        <Tab Title="dzazgometr">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+        <Tab Title="About">
+            <ShellContent ContentTemplate="{DataTemplate local:NewPage1}" />
+        </Tab>
+    </TabBar>
 </Shell>

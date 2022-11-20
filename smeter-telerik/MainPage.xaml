@@ -4,10 +4,11 @@
              xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
              x:Class="smeter_telerik.MainPage"
              Title="Dżazgometr">
-
-    <Grid >
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="480"></RowDefinition>
+            <RowDefinition Height="400"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
@@ -15,11 +16,18 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.Children>
-            <Button Text="Start" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Start_Clicked"></Button>
-            <Button Text="Stop" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center"></Button>
-            <telerik:RadRadialGauge AutomationId="gauge" >
+            <Label Text="testenv v1.0" Grid.Row="0" HorizontalOptions="Center"></Label>
+            <Label Text="Debug" Grid.Row="1" HorizontalOptions="Center" Margin="-20" FontSize="20"></Label>
+            <Button Margin="10" Text="+15" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Start_Clicked"></Button>
+            <Button Text="-15" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Stop_Clicked"></Button>
+            <Button Text="Start Accelerometer" Margin="10" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Start_Accel"></Button>
+            <Button Text="Stop Accelerometer" Grid.Row="4" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Stop_Accel"></Button>
+            <telerik:RadRadialGauge AutomationId="gauge">
+                <!--<telerik:RadRadialGauge.AnimationSettings>
+                    <telerik:AnimationSettings x:Name="gauge1Animations" Easing="CubicInOut" Duration="400" />
+                </telerik:RadRadialGauge.AnimationSettings>--> <!--wtf???-->
                 <telerik:RadRadialGauge.Axis>
-                    <telerik:GaugeLinearAxis Maximum="200"
+                    <telerik:GaugeLinearAxis Maximum="300"
                                Minimum="0"
                                Step="25" />
                 </telerik:RadRadialGauge.Axis>
@@ -31,15 +39,14 @@
                         <telerik:GaugeRange Color="Green"
                               From="0"
                               To="150" />
-                        <telerik:GaugeGradientRange From="0" To="200">
+                        <telerik:GaugeGradientRange From="0" To="300">
                             <telerik:RadGradientStop Offset="0" Color="Green" />
-                            <telerik:RadGradientStop Offset="150" Color="Yellow" />
-                            <telerik:RadGradientStop Offset="200" Color="Red" />
+                            <telerik:RadGradientStop Offset="200" Color="Yellow" />
+                            <telerik:RadGradientStop Offset="300" Color="Red" />
                         </telerik:GaugeGradientRange>
                     </telerik:GaugeRangesDefinition>
                 </telerik:RadRadialGauge.Ranges>
             </telerik:RadRadialGauge>
         </Grid.Children>
     </Grid>
-
 </ContentPage>
