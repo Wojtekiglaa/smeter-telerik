@@ -20,9 +20,8 @@
             <Label Text="Debug" Grid.Row="1" HorizontalOptions="Center" Margin="-20" FontSize="20"></Label>
             <Button Margin="10" Text="+15" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Start_Clicked"></Button>
             <Button Text="-15" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Stop_Clicked"></Button>
-            <Button Text="Start Accelerometer" Margin="10" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Start_Accel"></Button>
-            <Button Text="Stop Accelerometer" Grid.Row="4" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Stop_Accel"></Button>
-            <telerik:RadRadialGauge AutomationId="gauge">
+            <Button Text="Start/Stop Accelerometer" Margin="10" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Start_Accel"></Button>
+            <telerik:RadRadialGauge AutomationId="gauge" x:Name="gaug">
                 <!--<telerik:RadRadialGauge.AnimationSettings>
                     <telerik:AnimationSettings x:Name="gauge1Animations" Easing="CubicInOut" Duration="400" />
                 </telerik:RadRadialGauge.AnimationSettings>--> <!--wtf???-->

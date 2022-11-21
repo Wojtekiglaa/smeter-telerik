@@ -10,14 +10,26 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
         //dzazgometr.Value= 200;
-        sus = 10;
+        sus = 300;
         Vibrate();
+        gaug.AnimationSettings.Duration = 200;
         Update();
 	}
     public async void AccelerometerStart()
     {
-        Accelerometer.Start(SensorSpeed.Fastest);
-        Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
+        if (Accelerometer.IsSupported)
+        {
+            if(!Accelerometer.IsMonitoring)
+            {
+                Accelerometer.Start(SensorSpeed.Fastest);
+                Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
+            }
+            else
+            {
+                Accelerometer.Default.Stop();
+                Accelerometer.ShakeDetected-= Accelerometer_ShakeDetected;
+            }
+        }
     }
 	public async void Update()
 	{
@@ -29,7 +41,7 @@ public partial class MainPage : ContentPage
                 await Task.Delay(1000);
                 //dzazgometr.Value = random.Next(1, 200);
                 dzazgometr.Value = sus;
-                sus -= 3;
+                sus -= random.Next(1,10);
             }
             else
             {
@@ -37,12 +49,12 @@ public partial class MainPage : ContentPage
             }
         }
     }
-
+    //todo: one button for start or stop, fix vibrate
     private async void Vibrate()
     {
         while (true)
         {
-            if (DeviceInfo.Current.Platform == DevicePlatform.Android)
+            if (Vibration.Default.IsSupported == true)
             {
                 switch (sus)
                 {
@@ -51,6 +63,7 @@ public partial class MainPage : ContentPage
                     case <= 300: { while (sus <= 300) { Vibration.Default.Vibrate(100); await Task.Delay(300); } break; }
                 }
             }
+            else { break; }
         }
     }
     private void Start_Clicked(object sender, EventArgs e)
@@ -61,19 +74,14 @@ public partial class MainPage : ContentPage
 
     void Accelerometer_ShakeDetected(object sender,EventArgs args )
     {
-        sus += 15;
+        sus += 50;
     }
 
     private void Stop_Clicked(object sender, EventArgs e)
     {
 		//czy = false;
-       Accelerometer.Stop();
+       //Accelerometer.Stop();
        sus -= 15;
-    }
-
-    private void Stop_Accel(object sender, EventArgs e)
-    {
-        Accelerometer.Stop();
     }
 
     private void Start_Accel(object sender, EventArgs e)
