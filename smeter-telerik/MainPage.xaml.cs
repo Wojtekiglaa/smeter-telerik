@@ -42,7 +42,7 @@ public partial class MainPage : ContentPage
                 await Task.Delay(1000);
                 //dzazgometr.Value = random.Next(1, 200);
                 dzazgometr.Value = sus;
-                sus -= random.Next(1,10);
+                sus -= random.Next(1,5);
             }
             else
             {
@@ -57,12 +57,12 @@ public partial class MainPage : ContentPage
         {
             if (Vibration.Default.IsSupported == true)
             {
-                switch (sus)
-                {
-                    case <= 100: { while (sus <= 100) { Vibration.Default.Vibrate(100); await Task.Delay(1500); } break; }
-                    case <= 200: { while (sus <= 200) { Vibration.Default.Vibrate(100); await Task.Delay(800); } break; }
-                    case <= 300: { while (sus <= 300) { Vibration.Default.Vibrate(100); await Task.Delay(400); } break; }
-                }
+                //switch (sus)
+                //{
+                    /*case <= 100: {*/ while (1 <= sus && sus <= 100) { HapticFeedback.Default.Perform(HapticFeedbackType.Click); await Task.Delay(1500); } 
+                    /*case <= 200: {*/ while (100 <= sus && sus <= 200) { HapticFeedback.Default.Perform(HapticFeedbackType.LongPress); await Task.Delay(800); } 
+                    /*case <= 300: {*/ while (200 <= sus && sus <= 300) { Vibration.Vibrate(100); await Task.Delay(400); }  
+                //}
             }
             else { break; }
         }
@@ -75,7 +75,7 @@ public partial class MainPage : ContentPage
 
     void Accelerometer_ShakeDetected(object sender,EventArgs args )
     {
-        sus += 50;
+        sus += random.Next(1,50);
     }
 
     private void Stop_Clicked(object sender, EventArgs e)
