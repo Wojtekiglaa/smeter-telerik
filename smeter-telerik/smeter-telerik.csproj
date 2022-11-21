@@ -32,7 +32,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-
+		
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 
@@ -48,8 +48,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\AppIcon\iconn.svg" />
+	  <None Remove="Resources\Fonts\Inter-Bold.otf" />
+	  <None Remove="Resources\Fonts\Inter-Regular.otf" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="Telerik.UI.for.Maui.Trial" Version="4.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiIcon Include="Resources\AppIcon\iconn.svg" TintColor="White" />
 	</ItemGroup>
 
 	<ItemGroup>
