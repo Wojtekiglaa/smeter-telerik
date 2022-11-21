@@ -4,7 +4,7 @@ public partial class MainPage : ContentPage
 {
 	Random random = new Random();
     bool czy = true;
-    int sus;
+    double sus;
 
 	public MainPage()
 	{
@@ -30,6 +30,7 @@ public partial class MainPage : ContentPage
                 Accelerometer.ShakeDetected-= Accelerometer_ShakeDetected;
             }
         }
+        //else { await DisplayAlert("accelerometer", "aint", "supported homie"); }
     }
 	public async void Update()
 	{
@@ -58,9 +59,9 @@ public partial class MainPage : ContentPage
             {
                 switch (sus)
                 {
-                    case <= 100: { while (sus <= 100) { Vibration.Default.Vibrate(100); await Task.Delay(700); } break; }
-                    case <= 200: { while (sus <= 200) { Vibration.Default.Vibrate(100); await Task.Delay(500); } break; }
-                    case <= 300: { while (sus <= 300) { Vibration.Default.Vibrate(100); await Task.Delay(300); } break; }
+                    case <= 100: { while (sus <= 100) { Vibration.Default.Vibrate(100); await Task.Delay(1500); } break; }
+                    case <= 200: { while (sus <= 200) { Vibration.Default.Vibrate(100); await Task.Delay(800); } break; }
+                    case <= 300: { while (sus <= 300) { Vibration.Default.Vibrate(100); await Task.Delay(400); } break; }
                 }
             }
             else { break; }
@@ -69,7 +70,7 @@ public partial class MainPage : ContentPage
     private void Start_Clicked(object sender, EventArgs e)
     {
        //czy = true;
-       sus += 15;
+       sus += 30;
     }
 
     void Accelerometer_ShakeDetected(object sender,EventArgs args )
@@ -81,7 +82,7 @@ public partial class MainPage : ContentPage
     {
 		//czy = false;
        //Accelerometer.Stop();
-       sus -= 15;
+       sus -= 30;
     }
 
     private void Start_Accel(object sender, EventArgs e)
