@@ -10,7 +10,7 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
         //dzazgometr.Value= 200;
-        sus = 300;
+        sus = 250;
         Vibrate();
         gaug.AnimationSettings.Duration = 200;
         Update();
