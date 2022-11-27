@@ -1,11 +1,13 @@
 ﻿//using Telerik.UI.Xaml.Controls.DataVisualization;
+using Plugin.Maui.Audio;
+using System.Reflection;
+
 namespace smeter_telerik;
 public partial class MainPage : ContentPage
 {
 	Random random = new Random();
     bool czy = true;
     double sus;
-
 	public MainPage()
 	{
 		InitializeComponent();
@@ -13,8 +15,15 @@ public partial class MainPage : ContentPage
         sus = 300;
         Vibrate();
         gaug.AnimationSettings.Duration = 200;
+        //InitializeAudio();
         Update();
 	}
+    Stream GetStreamFromFile(string filename)
+    {
+        var assembly = typeof(App).GetTypeInfo().Assembly;
+        var stream = assembly.GetManifestResourceStream("smeter-telerik." + filename);
+        return stream;
+    }
     public async void AccelerometerStart()
     {
         if (Accelerometer.IsSupported)
@@ -39,10 +48,12 @@ public partial class MainPage : ContentPage
         {
             if (czy)
             {
-                await Task.Delay(1000);
+                if(sus <= 0) { sus += 20; }
+                if (sus >= 300) { sus -= 20; }
                 //dzazgometr.Value = random.Next(1, 200);
                 dzazgometr.Value = sus;
                 sus -= random.Next(1,5);
+                await Task.Delay(1000);
             }
             else
             {
@@ -53,15 +64,18 @@ public partial class MainPage : ContentPage
     //todo: one button for start or stop, fix vibrate
     private async void Vibrate()
     {
+        var green = AudioManager.Current.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("d3.mp3"));
+        var yellow = AudioManager.Current.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("d4.mp3"));
+        var red = AudioManager.Current.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("d5.mp3"));
         while (true)
         {
             if (Vibration.Default.IsSupported == true)
             {
                 //switch (sus)
                 //{
-                    /*case <= 100: {*/ while (1 <= sus && sus <= 100) { HapticFeedback.Default.Perform(HapticFeedbackType.Click); await Task.Delay(1500); } 
-                    /*case <= 200: {*/ while (100 <= sus && sus <= 200) { HapticFeedback.Default.Perform(HapticFeedbackType.LongPress); await Task.Delay(800); } 
-                    /*case <= 300: {*/ while (200 <= sus && sus <= 300) { Vibration.Vibrate(100); await Task.Delay(400); }  
+                    /*case <= 100: {*/ while (1 <= sus && sus <= 100) { green.Play(); HapticFeedback.Default.Perform(HapticFeedbackType.Click); await Task.Delay(1500); } 
+                    /*case <= 200: {*/ while (100 <= sus && sus <= 200) { yellow.Play(); HapticFeedback.Default.Perform(HapticFeedbackType.LongPress); await Task.Delay(800); } 
+                    /*case <= 300: {*/ while (200 <= sus && sus <= 300) { red.Play(); Vibration.Vibrate(100); await Task.Delay(400); }  
                 //}
             }
             else { break; }
@@ -71,6 +85,7 @@ public partial class MainPage : ContentPage
     {
        //czy = true;
        sus += 30;
+       
     }
 
     void Accelerometer_ShakeDetected(object sender,EventArgs args )
@@ -90,4 +105,9 @@ public partial class MainPage : ContentPage
         AccelerometerStart();
     }
 }
-
+        //ISimpleAudioPlayer green = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+        //ISimpleAudioPlayer yellow = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+        //ISimpleAudioPlayer red = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+        //green.Load(await FileSystem.OpenAppPackageFileAsync("d3.mp3"));
+        //yellow.Load(await FileSystem.OpenAppPackageFileAsync("d4.mp3"));
+        //red.Load(await FileSystem.OpenAppPackageFileAsync("d5.mp3"));
