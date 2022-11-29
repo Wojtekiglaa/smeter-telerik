@@ -15,7 +15,6 @@ public partial class NewPage1 : ContentPage
         sb.AppendLine($"Manufacturer: {DeviceInfo.Current.Manufacturer}");
         sb.AppendLine($"Name: {DeviceInfo.Name}");
         sb.AppendLine($"OS Version: {DeviceInfo.VersionString}");
-        sb.AppendLine($"Refresh Rate: {DeviceInfo.Current}");
         sb.AppendLine($"Idiom: {DeviceInfo.Current.Idiom}");
         sb.AppendLine($"Platform: {DeviceInfo.Current.Platform}");
 

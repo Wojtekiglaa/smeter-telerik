@@ -52,7 +52,7 @@ public partial class MainPage : ContentPage
                 if (sus >= 300) { sus -= 20; }
                 //dzazgometr.Value = random.Next(1, 200);
                 dzazgometr.Value = sus;
-                sus -= random.Next(1,5);
+                sus -= random.Next(1,3);
                 await Task.Delay(1000);
             }
             else
@@ -73,7 +73,7 @@ public partial class MainPage : ContentPage
             {
                 //switch (sus)
                 //{
-                    /*case <= 100: {*/ while (1 <= sus && sus <= 100) { green.Play(); HapticFeedback.Default.Perform(HapticFeedbackType.Click); await Task.Delay(1500); } 
+                    /*case <= 100: {*/ while (1 <= sus && sus <= 100) { green.Play(); HapticFeedback.Default.Perform(HapticFeedbackType.Click); await Task.Delay(1000); } 
                     /*case <= 200: {*/ while (100 <= sus && sus <= 200) { yellow.Play(); HapticFeedback.Default.Perform(HapticFeedbackType.LongPress); await Task.Delay(800); } 
                     /*case <= 300: {*/ while (200 <= sus && sus <= 300) { red.Play(); Vibration.Vibrate(100); await Task.Delay(400); }  
                 //}

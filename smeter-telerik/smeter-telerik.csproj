@@ -51,6 +51,8 @@
 	  <None Remove="Resources\AppIcon\iconn.svg" />
 	  <None Remove="Resources\Fonts\Inter-Bold.otf" />
 	  <None Remove="Resources\Fonts\Inter-Regular.otf" />
+	  <None Remove="Resources\Images\leszek.png" />
+	  <None Remove="Resources\Images\warning.png" />
 	</ItemGroup>
 
 	<ItemGroup>

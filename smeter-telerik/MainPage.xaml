@@ -48,6 +48,8 @@
                     </telerik:GaugeRangesDefinition>
                 </telerik:RadRadialGauge.Ranges>
             </telerik:RadRadialGauge>
+            <Image Source="leszek.png" Grid.Row="0" Scale="0.09" Margin="10,10,220,-330"></Image>
+            <Image Source="warning.png" Grid.Row="0" Scale="0.07" Margin="10,10,-220,-330"></Image>
         </Grid.Children>
     </Grid>
 </ContentPage>
