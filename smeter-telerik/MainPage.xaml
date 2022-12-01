@@ -42,13 +42,13 @@
                               To="150" />
                         <telerik:GaugeGradientRange From="0" To="300">
                             <telerik:RadGradientStop Offset="0" Color="Green" />
-                            <telerik:RadGradientStop Offset="200" Color="Yellow" />
+                            <telerik:RadGradientStop Offset="150" Color="Yellow" />
                             <telerik:RadGradientStop Offset="300" Color="Red" />
                         </telerik:GaugeGradientRange>
                     </telerik:GaugeRangesDefinition>
                 </telerik:RadRadialGauge.Ranges>
             </telerik:RadRadialGauge>
-            <Image Source="leszek.png" Grid.Row="0" Scale="0.09" Margin="10,10,220,-330"></Image>
+            <Image Source="leszek.png" Grid.Row="0" Scale="0.25" Margin="10,10,220,-330"></Image>
             <Image Source="warning.png" Grid.Row="0" Scale="0.07" Margin="10,10,-220,-330"></Image>
         </Grid.Children>
     </Grid>
